@@ -88,10 +88,8 @@ The notebook follows a standard analytics pipeline:
 
 ## Author
 
-**Ashadul Hasan**
+**Ashadool Hassan**
 
 Aspiring Data Analyst focused on practical data analytics, visualization, and real-world project development.
 
 ---
-
-If you found this project helpful, consider starring the repository and sharing feedback.
