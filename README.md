@@ -1,131 +1,110 @@
-# AdventureWorks Sales Analysis Dashboard (Power BI)
+# CSGO Round Winner Prediction
 
-## 📊 Project Overview
+A machine learning project that predicts the **round winner** in Counter-Strike: Global Offensive (CS:GO) using match-state telemetry data.
 
-This project is a **Power BI dashboard built using the AdventureWorksLT dataset**.
-The goal of this report is to analyze product sales performance, category trends, and geographic distribution of sales.
+## Project Overview
 
-The dashboard helps visualize how different products, categories, and regions contribute to overall sales.
+This repository contains an end-to-end notebook workflow for:
+- loading and cleaning CS:GO round data,
+- encoding categorical features,
+- training baseline and improved classifiers,
+- applying **Linear Discriminant Analysis (LDA)** for feature selection,
+- evaluating model performance with accuracy and confusion matrices.
 
----
+The analysis is implemented in:
+- `CSGO_Project_by_ashadool.ipynb`
 
-## 🧾 Dataset
+## Dataset
 
-The dataset used in this project comes from **AdventureWorksLT**, a sample database provided by Microsoft.
+- Dataset source (Google Drive):  
+  <https://drive.google.com/file/d/1PMoa51-JvNZ_ar8ACQSw_6g9RJJd2LOQ/view?usp=sharing>
+- Notebook-reported raw size: **122,410 rows × 97 columns**
+- Missing values: none reported
+- Duplicates: removed during preprocessing
 
-Data Sources:
+## Workflow Summary
 
-* AdventureWorksLT SQL Server database
-* Additional US state codes dataset from Wikipedia (used for mapping)
+1. **Data Loading & Quality Checks**
+   - Load CSV with pandas.
+   - Inspect schema, descriptive statistics, nulls, and duplicates.
 
-Tables used:
+2. **Preprocessing**
+   - Label-encode key categorical columns:
+     - `bomb_planted`
+     - `map`
+     - `round_winner`
+   - Split into training and test sets.
 
-* **Customers**
-* **Sales**
+3. **Baseline Model**
+   - Train Logistic Regression on full feature set.
 
----
+4. **Feature Selection with LDA**
+   - Standardize features with `StandardScaler`.
+   - Fit LDA on training data.
+   - Score features from `lda.coef_` and select top 20.
 
-## 🛠 Tools & Technologies
+5. **Model Training on Selected Features**
+   - Logistic Regression
+   - Decision Tree Classifier
+   - Random Forest Classifier
 
-* **Power BI Desktop**
-* **SQL Server**
-* **Power Query (Data Transformation)**
-* **DAX (Data Analysis Expressions)**
+6. **Evaluation**
+   - Compare models by test accuracy.
+   - Review confusion matrices.
 
----
+## Results
 
-## 🔧 Data Preparation
+Notebook outputs report the following accuracies:
 
-Several transformations were applied before building the dashboard:
+- Logistic Regression (without LDA): **74.25%**
+- Logistic Regression (with LDA-selected features): **75.30%**
+- Decision Tree (with LDA-selected features): **81.22%**
+- Random Forest (with LDA-selected features): **85.50%** ✅
 
-* Removed unnecessary columns
-* Created a **LineTotal calculated column**
-* Created a **Target Sales measure**
-* Built relationships between tables
-* Imported US state codes dataset
-* Merged datasets to create a **State Code field** for geographic analysis
+**Best-performing model:** Random Forest (after LDA-based feature selection).
 
----
+## Tech Stack
 
-## 📈 Dashboard Visualizations
+- Python
+- Jupyter Notebook / Google Colab
+- pandas
+- NumPy
+- Matplotlib
+- scikit-learn
 
-The dashboard contains the following visuals:
+## How to Run
 
-1. **Gauge Chart – Target Sales**
+1. Clone this repository.
+2. Download the dataset from the link above.
+3. Update the dataset path in the notebook (currently Colab-style path is used).
+4. Open and run:
+   - `CSGO_Project_by_ashadool.ipynb`
 
-   * Shows current sales compared to target sales.
+### Example local setup
 
-2. **Sales by Category (Bar Chart)**
-
-   * Displays total order quantity by product category.
-   * Includes a constant line benchmark.
-
-3. **Top Selling Products (Column Chart)**
-
-   * Highlights products generating the highest revenue.
-
-4. **Top Selling Companies (Pie Chart)**
-
-   * Shows which companies contribute most to sales.
-
-5. **Sales by SubCategory (Donut Chart)**
-
-   * Breaks down sales across product subcategories.
-
-6. **Sales by State (Map Visual)**
-
-   * Displays geographical sales distribution across US states.
-
----
-
-## 📌 Key Insights
-
-* **Bike category generates the highest sales volume.**
-* A few companies contribute a large share of overall revenue.
-* Certain products consistently outperform others in sales.
-* Sales activity is concentrated in specific US states.
-
----
-
-## 📷 Dashboard Preview
-
-*(Add your dashboard screenshot here)*
-
-Example:
-
-```
-![Dashboard Screenshot](dashboard.png)
+```bash
+python -m venv .venv
+source .venv/bin/activate
+pip install pandas numpy matplotlib scikit-learn jupyter
+jupyter notebook
 ```
 
----
+## Repository Structure
 
-## 💡 What I Learned
+```text
+.
+├── CSGO_Project_by_ashadool.ipynb   # Main analysis and modeling notebook
+└── README.md                        # Project documentation
+```
 
-Through this project I practiced:
+## Future Improvements
 
-* Data modeling in Power BI
-* Data cleaning using Power Query
-* Creating calculated columns and measures
-* Building interactive dashboards
-* Visualizing geographic sales data
+- Add reproducible training scripts (`src/` + `requirements.txt`).
+- Track experiments and hyperparameters.
+- Add additional metrics (F1, ROC-AUC, precision/recall).
+- Package the best model for inference.
+- Build a small dashboard/API for live predictions.
 
----
+## Author
 
-## 🚀 Future Improvements
-
-Possible improvements for the dashboard:
-
-* Add time-based sales analysis
-* Include customer segmentation
-* Create interactive filters and slicers
-* Add KPI cards for quick metrics overview
-
----
-
-## 👤 Author
-
-**Ashadul Hasan**
-
-Aspiring Data Analyst | Learning Data Analytics and Business Intelligence tools.
-
----
+Created by **Ashadool**.
