@@ -1,131 +1,97 @@
-# AdventureWorks Sales Analysis Dashboard (Power BI)
+# Counter-Strike: Global Offensive (CS:GO) Data Analysis
 
-## 📊 Project Overview
+A structured exploratory data analysis (EDA) project on CS:GO match/player statistics, built in Jupyter/Colab using Python data analysis and visualization libraries.
 
-This project is a **Power BI dashboard built using the AdventureWorksLT dataset**.
-The goal of this report is to analyze product sales performance, category trends, and geographic distribution of sales.
+## Project Summary
 
-The dashboard helps visualize how different products, categories, and regions contribute to overall sales.
+This repository contains a notebook-based analytics workflow that:
 
----
+- Loads and inspects a large CS:GO dataset.
+- Performs foundational data quality checks (nulls, duplicates, schema review).
+- Applies early feature-engineering steps.
+- Uses visual analysis to explore relationships across gameplay variables.
 
-## 🧾 Dataset
+The project is aimed at demonstrating practical EDA skills for gaming telemetry and performance datasets.
 
-The dataset used in this project comes from **AdventureWorksLT**, a sample database provided by Microsoft.
+## Repository Contents
 
-Data Sources:
+- `CSGO_Project_by_ashadool.ipynb` — Main notebook with end-to-end analysis.
+- `README.md` — Project documentation.
 
-* AdventureWorksLT SQL Server database
-* Additional US state codes dataset from Wikipedia (used for mapping)
+## Dataset
 
-Tables used:
+The notebook references an external dataset (shared via Google Drive by the author).
 
-* **Customers**
-* **Sales**
+- Dataset link (as documented in the notebook):
+  - `https://drive.google.com/file/d/1PMoa51-JvNZ_ar8ACQSw_6g9RJJd2LOQ/view?usp=sharing`
 
----
+> Note: Update local paths in the notebook (if needed) based on where you store the downloaded CSV.
 
-## 🛠 Tools & Technologies
+## Tech Stack
 
-* **Power BI Desktop**
-* **SQL Server**
-* **Power Query (Data Transformation)**
-* **DAX (Data Analysis Expressions)**
+- **Language:** Python
+- **Environment:** Jupyter Notebook / Google Colab
+- **Libraries:**
+  - `pandas`
+  - `numpy`
+  - `matplotlib`
+  - `seaborn`
 
----
+## Analysis Workflow
 
-## 🔧 Data Preparation
+The notebook follows a standard analytics pipeline:
 
-Several transformations were applied before building the dashboard:
+1. **Data Loading**
+   - Import dataset into a DataFrame.
+2. **Data Understanding**
+   - Review dimensions, columns, data types, and descriptive statistics.
+3. **Data Quality Validation**
+   - Check for missing values and duplicate records.
+4. **Data Cleaning**
+   - Remove duplicates and ensure a clean working dataset.
+5. **Feature Engineering**
+   - Introduce/derive useful analytical fields.
+6. **Visualization & Insights**
+   - Generate plots to identify trends and relationships.
 
-* Removed unnecessary columns
-* Created a **LineTotal calculated column**
-* Created a **Target Sales measure**
-* Built relationships between tables
-* Imported US state codes dataset
-* Merged datasets to create a **State Code field** for geographic analysis
+## How to Run
 
----
+### Option 1: Google Colab
 
-## 📈 Dashboard Visualizations
+1. Open the notebook in Colab.
+2. Upload/download the dataset and adjust the file path.
+3. Run cells sequentially.
 
-The dashboard contains the following visuals:
+### Option 2: Local Jupyter Environment
 
-1. **Gauge Chart – Target Sales**
+1. Clone this repository:
+   ```bash
+   git clone <your-repo-url>
+   cd CASGO_Project
+   ```
+2. Install dependencies:
+   ```bash
+   pip install pandas numpy matplotlib seaborn notebook
+   ```
+3. Start Jupyter Notebook:
+   ```bash
+   jupyter notebook
+   ```
+4. Open `CSGO_Project_by_ashadool.ipynb` and run all cells.
 
-   * Shows current sales compared to target sales.
+## Potential Extensions
 
-2. **Sales by Category (Bar Chart)**
+- Build player-performance clusters (unsupervised learning).
+- Add comparative analysis across maps/teams/roles.
+- Create reusable dashboards (e.g., Plotly/Power BI/Tableau).
+- Introduce predictive models for outcome/performance metrics.
 
-   * Displays total order quantity by product category.
-   * Includes a constant line benchmark.
-
-3. **Top Selling Products (Column Chart)**
-
-   * Highlights products generating the highest revenue.
-
-4. **Top Selling Companies (Pie Chart)**
-
-   * Shows which companies contribute most to sales.
-
-5. **Sales by SubCategory (Donut Chart)**
-
-   * Breaks down sales across product subcategories.
-
-6. **Sales by State (Map Visual)**
-
-   * Displays geographical sales distribution across US states.
-
----
-
-## 📌 Key Insights
-
-* **Bike category generates the highest sales volume.**
-* A few companies contribute a large share of overall revenue.
-* Certain products consistently outperform others in sales.
-* Sales activity is concentrated in specific US states.
-
----
-
-## 📷 Dashboard Preview
-
-*(Add your dashboard screenshot here)*
-
-Example:
-
-```
-![Dashboard Screenshot](dashboard.png)
-```
-
----
-
-## 💡 What I Learned
-
-Through this project I practiced:
-
-* Data modeling in Power BI
-* Data cleaning using Power Query
-* Creating calculated columns and measures
-* Building interactive dashboards
-* Visualizing geographic sales data
-
----
-
-## 🚀 Future Improvements
-
-Possible improvements for the dashboard:
-
-* Add time-based sales analysis
-* Include customer segmentation
-* Create interactive filters and slicers
-* Add KPI cards for quick metrics overview
-
----
-
-## 👤 Author
+## Author
 
 **Ashadul Hasan**
 
-Aspiring Data Analyst | Learning Data Analytics and Business Intelligence tools.
+Aspiring Data Analyst focused on practical data analytics, visualization, and real-world project development.
 
 ---
+
+If you found this project helpful, consider starring the repository and sharing feedback.
