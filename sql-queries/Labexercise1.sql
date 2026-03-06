@@ -1,2 +1,0 @@
--- Placeholder SQL script file.
--- Replace with the actual Labexercise1.sql content.
